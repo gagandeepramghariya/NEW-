@@ -39,7 +39,8 @@ while True:
       print("2. show All banks details")
       print("3. deposit amount")
       print("4. withdraw amount")
-      print("5. exit")
+      print("5. amount transfer")
+      print("6. exit")
       choice=int(input("Enter your choice: "))
        
       if choice==1:
@@ -77,8 +78,35 @@ while True:
                 else:
                         print("Account not found.")
       elif choice==5:
+                if len(banks)<2:
+                  print("At least two accounts are required for transfer.")
+                else:
+                 from_account_number = int(input("Enter your account number: "))
+                 to_account_number = int(input("Enter recipient's account number: "))
+                 amount = float(input("Enter amount to transfer: "))
+                
+                 from_account = None
+                 to_account = None
+                
+                 for account in banks:
+                    if account.account_number == from_account_number:
+                        from_account = account
+                    if account.account_number == to_account_number:
+                        to_account = account
+                
+                 if from_account and to_account:
+                    if 0 < amount <= from_account.balance:
+                        from_account.balance -= amount
+                        to_account.balance += amount
+                        print(f"Transferred {amount} from account {from_account_number} to account {to_account_number}.")
+                    else:
+                        print("Insufficient balance or invalid amount.")
+                 else:
+                    print("One or both account numbers not found.") 
+      elif choice==6:
             print("Exiting the program.")
             break
+           
      
       
       
