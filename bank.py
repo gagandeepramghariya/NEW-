@@ -40,6 +40,7 @@ while True:
       print("3. deposit amount")
       print("4. withdraw amount")
       print("5. amount transfer")
+      print("6. amount rec ")
       print("6. exit")
       choice=int(input("Enter your choice: "))
        
